@@ -3,33 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>انتظر قليلاً - 1</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      text-align: center;
-      font-family: Arial;
-      background: #111;
-      color: #fff;
-      padding: 20px;
-      margin: 0;
-    }
-
-    #countdown {
-      font-size: 48px;
-      margin: 20px 0;
-      color: #0f0;
-    }
-
-    .banner {
-      width: 100%;
-      max-width: 728px;
-      height: 90px;
-      margin: 20px auto;
-      background: #444;
-      line-height: 90px;
-      color: #ccc;
-      font-size: 20px;
-    }
+    body { text-align: center; font-family: Arial; background: #111; color: #fff; padding: 50px; }
+    #countdown { font-size: 48px; margin: 20px 0; color: #0f0; }
+    .banner { width: 100%; max-width: 728px; height: 90px; margin: 20px auto; background: #444; line-height: 90px; color: #ccc; }
   </style>
 </head>
 <body>
@@ -50,7 +27,6 @@
     };
   </script>
 
-  <!-- العد التنازلي والتحويل -->
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const link = urlParams.get("link");
