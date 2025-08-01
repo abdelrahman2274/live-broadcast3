@@ -4,70 +4,21 @@
   <meta charset="UTF-8" />
   <title>جاري التحميل...</title>
   <style>
-    body {
-      text-align: center;
-      font-family: Arial;
-      background: #111;
-      color: #fff;
-      padding: 50px;
-    }
-    #countdown {
-      font-size: 48px;
-      margin: 20px 0;
-      color: #0f0;
-    }
-    .banner {
-      width: 100%;
-      max-width: 728px;
-      height: 90px;
-      margin: 20px auto;
-      background: #666;
-      line-height: 90px;
-      color: #ccc;
-    }
-    #videoContainer {
-      display: none;
-      margin-top: 30px;
-    }
-    video {
-      width: 100%;
-      max-height: 70vh;
-      background: #000;
-    }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #28a745;
-      color: white;
-      border: none;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    body { text-align: center; font-family: Arial; background: #111; color: #fff; padding: 50px; }
+    #countdown { font-size: 48px; margin: 20px 0; color: #0f0; }
+    .banner { width: 100%; max-width: 728px; height: 90px; margin: 20px auto; background: #666; line-height: 90px; color: #ccc; }
   </style>
 </head>
 <body>
 
-  <div class="banner">📢 إعلان بانر أعلى 3</div>
+  <div class="banner">📢 إعلان بانر آخر 3</div>
 
   <h1>⏳ انتظر لحظة...</h1>
-  <p>جاري التحميل، سيتم عرض البث بعد العد التنازلي</p>
-
+  <p>جاري التحويل للبث المباشر</p>
+  
   <div id="countdown">4</div>
-
-  <div class="banner">🔻 إعلان بانر أسفل 3 🔻</div>
-
-  <!-- مشغل الفيديو -->
-  <div id="videoContainer">
-    <video id="videoPlayer" controls>
-      <source id="videoSource" src="" type="video/mp4">
-      متصفحك لا يدعم تشغيل الفيديو.
-    </video>
-    <br>
-    <button onclick="fullscreenVideo()">🎬 تكبير الشاشة</button>
-  </div>
-
-  <!-- popunder -->
+<div class="banner">🔻 إعلان بانر أسفل 3 🔻</div>
+  <!-- إعلانات Popunder -->
   <script>
     window.onload = () => {
       window.open('https://popunder1-link3.com', '_blank');
@@ -81,34 +32,15 @@
 
     let count = 4;
     const countdown = document.getElementById('countdown');
-    const videoContainer = document.getElementById('videoContainer');
-    const videoSource = document.getElementById('videoSource');
 
     const timer = setInterval(() => {
       count--;
       countdown.textContent = count;
       if (count === 0 && finalLink) {
         clearInterval(timer);
-        countdown.style.display = "none";
-
-        // إعداد الفيديو
-        videoSource.src = finalLink;
-        document.getElementById('videoPlayer').load();
-
-        videoContainer.style.display = "block";
+        window.location.href = finalLink;
       }
     }, 1000);
-
-    function fullscreenVideo() {
-      const video = document.getElementById("videoPlayer");
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-      }
-    }
   </script>
 
 </body>
