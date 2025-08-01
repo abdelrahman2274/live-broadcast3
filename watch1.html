@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>انتظر قليلاً - 1</title>
+  <style>
+    body { text-align: center; font-family: Arial; background: #111; color: #fff; padding: 50px; }
+    #countdown { font-size: 48px; margin: 20px 0; color: #0f0; }
+    .banner { width: 100%; max-width: 728px; height: 90px; margin: 20px auto; background: #444; line-height: 90px; color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <div class="banner">🔺 إعلان بانر أعلى 1 🔺</div>
+
+  <h1>🔔 الرجاء الانتظار</h1>
+  <p>سيتم تحويلك تلقائيًا بعد انتهاء العد التنازلي</p>
+  <div id="countdown">10</div>
+
+  <div class="banner">🔻 إعلان بانر أسفل 1 🔻</div>
+
+  <!-- إعلانات Popunder -->
+  <script>
+    window.onload = () => {
+      window.open('https://popunder1-link1.com', '_blank');
+      window.open('https://popunder2-link1.com', '_blank');
+    };
+  </script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const link = urlParams.get("link");
+
+    let count = 10;
+    const countdown = document.getElementById('countdown');
+
+    const timer = setInterval(() => {
+      count--;
+      countdown.textContent = count;
+      if (count === 8 && link) {
+        clearInterval(timer);
+        window.location.href = `watch2.html?link=${encodeURIComponent(link)}`;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
