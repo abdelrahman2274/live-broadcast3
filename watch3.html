@@ -3,20 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <title>جاري التحميل...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { text-align: center; font-family: Arial; background: #111; color: #fff; padding: 50px; }
-    #countdown { font-size: 48px; margin: 20px 0; color: #0f0; }
-    .banner { width: 100%; max-width: 728px; height: 90px; margin: 20px auto; background: #666; line-height: 90px; color: #ccc; }
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+
+    #countdown {
+      font-size: 48px;
+      margin: 20px 0;
+      color: #0f0;
+    }
+
+    .banner {
+      width: 100%;
+      max-width: 728px;
+      height: 90px;
+      margin: 20px auto;
+      background: #666;
+      line-height: 90px;
+      color: #ccc;
+      font-size: 20px;
+    }
+
+    .iframe-container {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
 
-  <div class="banner">📢 إعلان بانر آخر 3</div>
+  <div class="banner">📢 إعلان بانر أعلى 3</div>
 
   <h1>⏳ انتظر لحظة...</h1>
   <p>جاري التحويل للبث المباشر</p>
+  
   <div id="countdown">4</div>
+
   <div class="banner">🔻 إعلان بانر أسفل 3 🔻</div>
+
   <!-- إعلانات Popunder -->
   <script>
     window.onload = () => {
@@ -25,6 +68,7 @@
     };
   </script>
 
+  <!-- تحويل بعد انتهاء العد التنازلي -->
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const finalLink = urlParams.get("link");
@@ -37,7 +81,12 @@
       countdown.textContent = count;
       if (count === 0 && finalLink) {
         clearInterval(timer);
-        window.location.href = finalLink;
+        // بعد العد، نعرض الفيديو في iframe بملء الشاشة
+        document.body.innerHTML = `
+          <div class="iframe-container">
+            <iframe src="${decodeURIComponent(finalLink)}" allowfullscreen></iframe>
+          </div>
+        `;
       }
     }, 1000);
   </script>
